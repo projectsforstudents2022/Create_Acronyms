@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#converts all ipython notebooks to latex
+
+
+#FILES="*.{md,tex}"
+FILES=*.{tex}
+
+for f in *.tex
+do
+    echo "opening $f"
+    python acrofinder.py "$f" > tmp.tex
+    rm "$f"
+    mv tmp.tex $f
+    printf "finished moving \n\n"
+done
+
+echo " <<<<<<<<<<<<< finished >>>>>>>>>>>>>>>>>>>>>>>>>>"
+
+#pdflatex notebooks.tex
+
+#rm *.log *.aux
